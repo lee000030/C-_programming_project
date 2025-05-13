@@ -10,24 +10,28 @@
 #include <iomanip>
 using namespace std;
 
-// ÇöÀç ¼Óµµ Ç¥½Ã
-void Display::show_all(double speed, double battery, int gear, double travel_distance) { 
+// í˜„ì¬ ì†ë„ í‘œì‹œ
+void Display::show_all(double speed, double battery, int gear, double travel_distance) {
 	cout << "\033[14A";
 
 	cout << "\033[2K\t\t\t*=============================================*\n";
 	cout << "\033[2K\t\t\t|                                             |\n";
-	cout << "\033[2K\t\t\t|\t\t ¼Óµµ: " << fixed << setprecision(2) << speed << " km/h              |\n";
-	cout << "\033[2K\t\t\t|\t\t ¹èÅÍ¸®: " << fixed << setprecision(2) << (int)battery << "%                  | \n";
-	cout << "\033[2K\t\t\t|\t\t ±â¾î: " << gear << "´Ü                    | \n";
-	cout << "\033[2K\t\t\t|\t\t °Å¸®: " << fixed << setprecision(3) << travel_distance << " km               | \n";
+	if (speed >= 10) { cout << "\033[2K\t\t\t|\t\t ì†ë„: " << fixed << setprecision(2) << speed << " km/h             |\n"; }
+	else { cout << "\033[2K\t\t\t|\t\t ì†ë„: " << fixed << setprecision(2) << speed << " km/h              |\n"; }
+
+	if ((int)battery < 10) { cout << "\033[2K\t\t\t|\t\t ë°°í„°ë¦¬: " << fixed << setprecision(2) << (int)battery << "%                   | \n"; }
+	else { cout << "\033[2K\t\t\t|\t\t ë°°í„°ë¦¬: " << fixed << setprecision(2) << (int)battery << "%                  | \n"; }
+	
+	cout << "\033[2K\t\t\t|\t\t ê¸°ì–´: " << gear << "ë‹¨                    | \n";
+	cout << "\033[2K\t\t\t|\t\t ê±°ë¦¬: " << fixed << setprecision(3) << travel_distance << " km               | \n";
 	cout << "\033[2K\t\t\t|                                             |\n";
 	cout << "\033[2K\t\t\t*=============================================*\n\n";
 }
 
 void Display::show_menu() {
-	cout << "\033[2K¾Ç¼¿ / ºü¸¥ ¾Ç¼¿ : À­ ¹æÇâÅ°, space\n";
-	cout << "\033[2Kºê·¹ÀÌÅ© / ºü¸¥ºê·¹ÀÌÅ© : ¾Æ·¡ ¹æÇâÅ°, Enter\n";
-	cout << "\033[2K±â¾î ¿Ã¸² / ³»¸² : u, d\n";
-	cout << "\033[2KÀÌµ¿°Å¸® ÃÊ±âÈ­ : i \n";
-	cout << "\033[2K¹èÅÍ¸® ÃæÀü : c | Àü¿ø ²ô±â : Esc\n";
+	cout << "\033[2Kì•…ì…€ / ë¹ ë¥¸ ì•…ì…€ : ìœ— ë°©í–¥í‚¤, space\n";
+	cout << "\033[2Kë¸Œë ˆì´í¬ / ë¹ ë¥¸ë¸Œë ˆì´í¬ : ì•„ë˜ ë°©í–¥í‚¤, Enter\n";
+	cout << "\033[2Kê¸°ì–´ ì˜¬ë¦¼ / ë‚´ë¦¼ : u, d\n";
+	cout << "\033[2Kì´ë™ê±°ë¦¬ ì´ˆê¸°í™” : i \n";
+	cout << "\033[2Kë°°í„°ë¦¬ ì¶©ì „ : c | ì „ì› ë„ê¸° : Esc\n";
 }
